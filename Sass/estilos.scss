@@ -1,127 +1,129 @@
+$header-color: #77181e;
+$text-color: #ffffff;
+
+$header-font: "Nova Square", sans-serif;
+$normal-font: "Roboto", sans-serif;
+
+$primary-font-size: 55px;
+$secondary-font-size: 20px;
+
+$background-color: #fef7e1;
 
 header {
-    background-color: #77181e;
-    color: #ffffff;
+    background-color: $header-color;
+    color: $text-color;
     padding: 1em 0;
     justify-content: space-around;
+
+    h1 {
+        font-family: $header-font;
+        font-size: $primary-font-size;
+        font-style: normal;
+        display: flex;
+        justify-content: center;
+    }
+
+    h2,
+    h3 {
+        font-family: $header-font;
+        font-style: normal;
+    }
 }
 
-h1{
-    font-family: "Nova Square", sans-serif;
-    font-size: 55px;
+p {
+    font-family: $normal-font;
     font-style: normal;
-    color: #ffffff;
-    display: flex;
-    justify-content: center;
 }
 
-h2{
-    font-family: "Nova Square", sans-serif;
-    font-style: normal;
-
-}
-
-h3{
-    font-family: "Nova Square", sans-serif;
-    font-style: normal;
-}
-
-p{
-    font-family: "Roboto", sans-serif;
-    font-style: normal;
-
-}
-
-.nav1,a {
+.nav1, a {
     list-style: none;
     display: flex;
     flex-flow: row;
     justify-content: space-around;
-    font-family: "Nova Square", sans-serif;
-    font-size: 20px;
+    font-family: $header-font;
+    font-size: $secondary-font-size;
     font-style: normal;
-    color: #ffffff
+    color: $text-color;
 }
 
-.type2{
+.type2 {
     display: flex;
     justify-content: center;
 }
 
-.imagenes{
+.imagenes {
     height: 40px;
     width: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color:#fef7e1;
+    background-color: $background-color;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+
+    main {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: 1200px;
+        margin: 20px auto;
+    }
 }
 
-main {
-    flex: 1;
+.card {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    max-width: 1200px;
-    margin: 20px auto;
-}
-
-.card{
-    display: flex;
-    justify-content:flex-end;
+    justify-content: flex-end;
     height: auto;
     width: 300px;
-    background-color: #fef7e1;
+    background-color: $background-color;
     padding-bottom: 10px;
+
+    .card-body {
+        text-align: center;
+    }
 }
 
-.card-body {
-    text-align: center;
-}
-
-.grid-container{
+.grid-container {
     display: flex;
-    width: 1200px;
-    height: 100%;
-}
+    width: 100%; // Modificado para ser 100% del ancho del contenedor
+    max-width: 1200px; // Ajuste máximo para evitar desbordamientos
+    height: auto; // Modificado para ajustar dinámicamente la altura
+    flex-wrap: wrap; // Permite que los elementos se envuelvan cuando el espacio es insuficiente
 
-.grid-container img {
-    width: 0px;
-    flex-grow: 1;
-    object-fit: cover;
-    opacity: .8;
-    transition: .5s ease;
-}
+    img {
+        width: 100%; // Hace que las imágenes ocupen todo el ancho del contenedor
+        height: auto; // Ajusta la altura automáticamente para mantener la proporción
+        object-fit: cover;
+        opacity: .8;
+        transition: .5s ease;
 
-.grid-container img:hover{
-    cursor: crosshair;
-    width: 300px;
-    opacity: 1;
-    filter: contrast(120%);
+        &:hover {
+            cursor: crosshair;
+            opacity: 1;
+            filter: contrast(120%);
+        }
+    }
 }
-
 
 footer {
-    background-color: #77181e;
-    color: #ffffff;
+    background-color: $header-color;
+    color: $text-color;
     padding: 1em;
     text-align: center;
-    display:flex ;
+    display: flex;
     justify-content: center;
     position: static;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1400px) and (min-width: 400px) {
     nav ul {
         flex-direction: column;
         align-items: center;
@@ -132,11 +134,28 @@ footer {
     }
 
     .grid-container {
-        grid-template-columns: 1fr;
+        justify-content: center; // Centra los elementos en pantallas medianas
     }
 }
 
-.grid-container.three-by-three {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+@media (max-width: 767px) {
+    header {
+        padding: 0.5em 0; // Reducir el relleno del encabezado en pantallas pequeñas
+    }
+
+    h1 {
+        font-size: 40px; // Reducir el tamaño del título en pantallas pequeñas
+    }
+
+    .nav1, a {
+        font-size: 16px; // Reducir el tamaño del texto del menú en pantallas pequeñas
+    }
+
+    .grid-container {
+        padding: 10px; // Agregar espacio alrededor del contenedor en pantallas pequeñas
+    }
+
+    .card {
+        width: 100%; // Hacer que las tarjetas ocupen todo el ancho en pantallas pequeñas
+    }
 }
